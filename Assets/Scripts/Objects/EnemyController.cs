@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
         }
 
         else Attack();
-
+      
     }
     private void OnCollisionEnter(Collision other)
     {    
@@ -77,7 +77,7 @@ public class EnemyController : MonoBehaviour
     
     private void Attack()
     {
-
+        RotateToTarget();
         if (_targetHP != null)
         {
             if (_reloadTimer > 0) _reloadTimer -= Time.deltaTime;

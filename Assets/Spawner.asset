@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnData:
   - UnitName: GoblinBow
-    SpawnedPrefab: {fileID: 2002048459751270691, guid: 30067c6a9a68b438b827f80670eae26c,
+    SpawnedPrefab: {fileID: 6527322422293018381, guid: c733b0b7dcc2e42c584a52d58a46078f,
       type: 3}
     Delay: 1
   - UnitName: GoblinBow
-    SpawnedPrefab: {fileID: 2002048459751270691, guid: 30067c6a9a68b438b827f80670eae26c,
+    SpawnedPrefab: {fileID: 6527322422293018381, guid: c733b0b7dcc2e42c584a52d58a46078f,
       type: 3}
     Delay: 1
   Circle: 0
