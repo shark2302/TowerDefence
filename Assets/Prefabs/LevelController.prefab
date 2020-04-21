@@ -902,6 +902,7 @@ MonoBehaviour:
   _spawners: []
   _mainTower: {fileID: 0}
   _endGamePanel: {fileID: 552103251607809988}
+  _gamePanel: {fileID: 747007855679044136}
   _endGameText: {fileID: 552103249845519895}
   _nextLevelButton: {fileID: 552103250844677854}
 --- !u!1 &747007854648668532

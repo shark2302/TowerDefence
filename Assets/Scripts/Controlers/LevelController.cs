@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private Spawner[] _spawners;
     [SerializeField] private GameObject _mainTower;
     [SerializeField] private GameObject _endGamePanel;
+    [SerializeField] private GameObject _gamePanel;
     [SerializeField] private Text _endGameText;
     [SerializeField] private Button _nextLevelButton;
     private GameObject _currentObject;
@@ -78,6 +79,17 @@ public class LevelController : MonoBehaviour
                     {
                         _currentBoxCollider.enabled = true;
                         _currentBoxCollider = null;
+                    }
+                }
+
+                float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
+                if (_currentObject.tag == "Fence" && mouseWheel !=0)
+                {
+                    if (mouseWheel > 0) {
+                        _currentObject.transform.Rotate(Vector3.up * 1f, Space.Self);
+                    }
+                    if (mouseWheel < 0) {
+                        _currentObject.transform.Rotate(Vector3.down * 1f, Space.Self);
                     }
                 }
         }
@@ -163,6 +175,8 @@ public class LevelController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         _endGamePanel.SetActive(true);
+        _gamePanel.SetActive(false);
+        Destroy(_currentObject);
         if (_win)
         {
             _endGameText.text = "Вы победили!";
