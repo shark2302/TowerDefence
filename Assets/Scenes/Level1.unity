@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7f366cd11eba2472293db2e16ee702de, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5df34148e542a481593ea87f2b850cdd, type: 2}
 --- !u!1 &10248927
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,10 +485,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f7a02297f37aa435dab9e2595902e15e,
         type: 2}
+    - target: {fileID: 678534353568928360, guid: 2085ee2d3bf7c40f7a485a01f7f94d29,
+        type: 3}
+      propertyPath: _tower
+      value: 
+      objectReference: {fileID: 1751509699}
     - target: {fileID: 678534353568928361, guid: 2085ee2d3bf7c40f7a485a01f7f94d29,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -54.9
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 678534353568928361, guid: 2085ee2d3bf7c40f7a485a01f7f94d29,
         type: 3}
@@ -498,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 678534353568928361, guid: 2085ee2d3bf7c40f7a485a01f7f94d29,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.99
+      value: -165
       objectReference: {fileID: 0}
     - target: {fileID: 678534353568928361, guid: 2085ee2d3bf7c40f7a485a01f7f94d29,
         type: 3}
@@ -658,6 +663,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6518901595837546267, guid: 9c97a7bd54b6340e0b2f5fa6e96ff4c2,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6518901595837546267, guid: 9c97a7bd54b6340e0b2f5fa6e96ff4c2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3418801384352680123, guid: 9c97a7bd54b6340e0b2f5fa6e96ff4c2, type: 3}

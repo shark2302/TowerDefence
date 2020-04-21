@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150464309061989
 Transform:
@@ -67,7 +67,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150463483578347
 Transform:
@@ -121,7 +121,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150463574270787
 Transform:
@@ -198,12 +198,13 @@ GameObject:
   - component: {fileID: -4412304818932460266}
   - component: {fileID: -8411352308320252569}
   - component: {fileID: -2441727373575289925}
+  - component: {fileID: 3581524072567394748}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Canon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150463830718559
 Transform:
@@ -298,6 +299,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 200
   _healthBar: {fileID: 5044724594831757771}
+--- !u!208 &3581524072567394748
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274150463830718554}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.2, y: 5.25, z: 2.895}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.41, y: 5.64, z: -0.14}
+  m_TimeToStationary: 0.5
 --- !u!1 &5274150463992601264
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +331,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150463992601271
 Transform:
@@ -393,7 +410,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150464220515910
 Transform:
@@ -472,7 +489,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150464478131295
 Transform:
@@ -551,7 +568,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5274150464732546981
 Transform:
@@ -621,6 +638,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5274150463830718559}
     m_Modifications:
+    - target: {fileID: 162272489060686478, guid: f317b82a7e9774a94a302e75fa98adcc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3830707571407907937, guid: f317b82a7e9774a94a302e75fa98adcc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -751,10 +773,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7903955801636721555, guid: f317b82a7e9774a94a302e75fa98adcc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 9079020690281571046, guid: f317b82a7e9774a94a302e75fa98adcc,
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079020690281571046, guid: f317b82a7e9774a94a302e75fa98adcc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f317b82a7e9774a94a302e75fa98adcc, type: 3}

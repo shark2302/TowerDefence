@@ -4,13 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class DefenceObject
-{
-    [HideInInspector]
-    public string UnitName;
-    public GameObject SpawnedPrefab;
-    public float cost;
-}
+ 
 
 [CreateAssetMenu(menuName = "Level config")]
 public class LevelConfig : ScriptableObject
@@ -25,8 +19,12 @@ public class LevelConfig : ScriptableObject
     public bool CanSetFence;
     public GameObject FencePrefab;
     public int FenceCost;
-    
-    
+
+    public bool CanSetTavern;
+    public GameObject TavernPrefab;
+    public int TavernCost;
+    public int UnitsInTavern;
+
     public int GetMoneyForLevel()
     {
         return Money;
@@ -62,4 +60,23 @@ public class LevelConfig : ScriptableObject
     {
         return FenceCost;
     }
+    public bool IsAvailibleToSetTavern()
+    {
+        return CanSetTavern;
+    }
+
+    public GameObject GetTavernPrefab()
+    {
+        return TavernPrefab;
+    }
+
+    public int GetTavernCost()
+    {
+        return TavernCost;
+    }
+    public int GetUnitsInTavern()
+    {
+        return UnitsInTavern;
+    }
+    
 }

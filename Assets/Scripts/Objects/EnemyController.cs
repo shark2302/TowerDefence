@@ -18,14 +18,16 @@ public class EnemyController : MonoBehaviour
     private GameObject _tower;
     private bool _endGame;
 
+    private HP _hp;
     // Start is called before the first frame update
     void OnEnable()
     {
         _animator.SetTrigger("RunTrigger");
         _isMoving = true;
-        _tower = GameObject.Find("MainTower").gameObject;
+       // _tower = GameObject.Find("MainTower").gameObject;
         _target = _tower;
         _reloadTimer = _reloadCooldown;
+        _hp = GetComponent<HP>();
     }
 
     private void FixedUpdate()
@@ -34,7 +36,8 @@ public class EnemyController : MonoBehaviour
             return;
         if (_tower == null)
         {
-            _animator.SetTrigger("WinTrigger");
+            _animator.SetTrigger("WinAnimation");
+            Destroy(gameObject, 1.5f);
             _endGame = true;
         }
         else if (_target == null && !_isMoving)
@@ -48,7 +51,6 @@ public class EnemyController : MonoBehaviour
             _isMoving = false;
             _animator.SetTrigger("AttackTrigger");
             _targetHP = _target.GetComponent<HP>();
-            Debug.Log(_targetHP.GetHP());
         }
         else if (_isMoving)
         {
@@ -65,7 +67,7 @@ public class EnemyController : MonoBehaviour
         {
            AvoidCollisionWithAnotherMob(other.gameObject);
         }
-        if (other.gameObject.tag == "Fence" || other.gameObject.tag == "Canon")
+        if (other.gameObject.tag == "Fence" || other.gameObject.tag == "Canon" || other.gameObject.tag == "Unit")
         {
             _isMoving = false;
             _target = other.gameObject;
@@ -78,7 +80,7 @@ public class EnemyController : MonoBehaviour
     private void Attack()
     {
         RotateToTarget();
-        if (_targetHP != null)
+        if (_targetHP != null && _hp.GetHP() > 0)
         {
             if (_reloadTimer > 0) _reloadTimer -= Time.deltaTime;
             if (_reloadTimer < 0) _reloadTimer = 0;
@@ -111,5 +113,11 @@ public class EnemyController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3f);
         else 
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 3f);
+    }
+
+    public void SetTower(GameObject tower)
+    {
+        _tower = tower;
+        _target = _tower;
     }
 }

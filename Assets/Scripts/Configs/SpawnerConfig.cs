@@ -16,15 +16,10 @@ public class SpawnerElement
 public class SpawnerConfig : ScriptableObject
 {
     public SpawnerElement[] SpawnData;
-    public bool Circle = false;
+ 
 
     public SpawnerElement GetElement(int i)
     {
-        if (Circle)
-        {
-            i %= SpawnData.Length;
-        }
-
         if (i < SpawnData.Length)
         {
             return SpawnData[i];

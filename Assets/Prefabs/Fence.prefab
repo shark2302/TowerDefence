@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 720700544725369825}
   - component: {fileID: 720700544725369830}
   - component: {fileID: 720700544725369852}
+  - component: {fileID: -2262143720982666340}
   m_Layer: 0
   m_Name: Fence
   m_TagString: Fence
@@ -129,6 +130,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _healthBar: {fileID: 7935258336671585423}
+--- !u!208 &-2262143720982666340
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720700544725369831}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.83, y: 0.385, z: 0.102000006}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.8, y: 0.43, z: 0.05}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3679525823045393078
 PrefabInstance:
   m_ObjectHideFlags: 0

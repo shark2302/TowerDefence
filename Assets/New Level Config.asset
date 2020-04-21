@@ -21,3 +21,8 @@ MonoBehaviour:
   FencePrefab: {fileID: 720700544725369831, guid: 6180daa48196a4ab7a747db359a5d284,
     type: 3}
   FenceCost: 200
+  CanSetTavern: 1
+  TavernPrefab: {fileID: 3841100542478708981, guid: a8e79587dac3043348925ce355032a00,
+    type: 3}
+  TavernCost: 700
+  UnitsInTavern: 3

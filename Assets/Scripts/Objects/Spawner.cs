@@ -11,6 +11,7 @@ namespace Objects
         [SerializeField]
         private SpawnerConfig _spawnerConfig;
 
+        [SerializeField] private GameObject _tower;
         private List<GameObject> _enemyList;
         private Coroutine _spawnRoutine;
         private int _counter = 0;
@@ -44,6 +45,7 @@ namespace Objects
                 {
                     var posZ = Random.Range(transform.position.z - 40, transform.position.z + 40)*.5f;
                     var obj = Instantiate(element.SpawnedPrefab, new Vector3(transform.position.x, transform.position.y, posZ), transform.rotation);
+                    obj.GetComponent<EnemyController>().SetTower(_tower);
                     _enemyList.Add(obj);
                     element = _spawnerConfig.GetElement(++_counter);
                     if (element == null)
@@ -59,7 +61,6 @@ namespace Objects
 
         private IEnumerator CountDestroyedObjects()
         {
-            Debug.Log("Courotine started");
             yield return new WaitForSeconds(2);
             while (_destroyedObjects < _counter)
             {
