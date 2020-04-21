@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c34c6cd96c8e4fea9fc0b636d673d0f, type: 3}
+  m_Name: Spawner1
+  m_EditorClassIdentifier: 
+  SpawnData:
+  - UnitName: GoblinDagger
+    SpawnedPrefab: {fileID: 4891450928703974347, guid: 146c90423e3044f1e9b74151a86114b8,
+      type: 3}
+    Delay: 1
+  - UnitName: GoblinDagger
+    SpawnedPrefab: {fileID: 4891450928703974347, guid: 146c90423e3044f1e9b74151a86114b8,
+      type: 3}
+    Delay: 1
+  - UnitName: GoblinDagger
+    SpawnedPrefab: {fileID: 4891450928703974347, guid: 146c90423e3044f1e9b74151a86114b8,
+      type: 3}
+    Delay: 1
+  Circle: 0

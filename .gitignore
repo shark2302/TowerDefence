@@ -1,0 +1,10 @@
+Library/
+Temp/
+obj/
+Logs/
+*/.idea/
+/.idea
+Assembly-CSharp.csproj
+MyTowerDefense.sln
+Assembly-CSharp-Editor.csproj
+
