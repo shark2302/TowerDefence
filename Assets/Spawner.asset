@@ -21,4 +21,7 @@ MonoBehaviour:
     SpawnedPrefab: {fileID: 6527322422293018381, guid: c733b0b7dcc2e42c584a52d58a46078f,
       type: 3}
     Delay: 1
-  Circle: 0
+  - UnitName: GoblinDagger
+    SpawnedPrefab: {fileID: 4891450928703974347, guid: 146c90423e3044f1e9b74151a86114b8,
+      type: 3}
+    Delay: 1

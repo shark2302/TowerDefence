@@ -20,6 +20,7 @@ namespace Objects
         {
             _spawnRoutine = StartCoroutine(SpawnRoutine);
             _enemyList = new List<GameObject>();
+            StartCoroutine(NullDeleter());
         }
 
         private void OnDisable()
@@ -74,6 +75,24 @@ namespace Objects
             }
         }
 
+        private IEnumerator NullDeleter()
+        {
+            yield return new WaitForSeconds(3f);
+            while (true)
+            {
+                foreach (var enemy in _enemyList)
+                {
+                    if (enemy == null)
+                    {
+                        _enemyList.Remove(enemy);
+                        break;
+                    }
+                }
+                Debug.Log(_enemyList);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
         public void DestroyAllSpawnedObjects()
         {
             foreach (var enemy in _enemyList)
@@ -84,7 +103,10 @@ namespace Objects
 
         public bool AllSpawnedObjectsDestroyed()
         {
-            return _destroyedObjects == _spawnerConfig.SpawnData.Length;
+            Debug.Log(_counter + " " + _spawnerConfig.SpawnData.Length);
+            if (_counter != _spawnerConfig.SpawnData.Length)
+                return false;
+            return _enemyList.Count == 0;
         }
         
         public List<GameObject> GetEnemyList()

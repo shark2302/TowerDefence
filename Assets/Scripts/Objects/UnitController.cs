@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Objects;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,7 +20,9 @@ public class UnitController : MonoBehaviour
    private float _reloadCooldown = 1f;
    private float _reloadTimer;
    private HP _hp;
-   private void Awake()
+   private GameObject _mainTower;
+ 
+   private void OnEnable()
    {
       _navAgent = GetComponent<NavMeshAgent>();
       _navAgent.updateRotation = false;
@@ -28,6 +31,7 @@ public class UnitController : MonoBehaviour
       _isMoving = true;
       _reloadTimer = _reloadCooldown;
       _hp = GetComponent<HP>();
+      StartCoroutine(CheckMainTower());
    }
    private void Update()
    {
@@ -62,6 +66,7 @@ public class UnitController : MonoBehaviour
    private GameObject FindNearestEnemy()
    {
       List<GameObject> enemies = CombineSpawnedEnemy();
+      Debug.Log(enemies.Count);
       int distance = 10000000;
       GameObject nearestEnemy = null;
       foreach (var enemy in enemies)
@@ -69,7 +74,6 @@ public class UnitController : MonoBehaviour
          if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) < distance)
             nearestEnemy = enemy;
       }
-
       return nearestEnemy;
    }
    
@@ -101,6 +105,7 @@ public class UnitController : MonoBehaviour
          if (_reloadTimer == 0)
          {
             _targetHP.ChangeHp(_damage);
+            Debug.Log(_targetHP.GetHP());
             _reloadTimer = _reloadCooldown;
             if (_targetHP.GetHP() <= 0)
             {
@@ -116,5 +121,21 @@ public class UnitController : MonoBehaviour
    {
       _spawners = spawners;
    }
-   
+   public void SetTower(GameObject tower)
+   {
+      _mainTower = tower;
+   }
+
+   private IEnumerator CheckMainTower()
+   {
+      yield return new WaitForSeconds(2f);
+      while (true)
+      {
+         if (_mainTower == null)
+         {
+            Destroy(gameObject, 1.5f);
+         }
+         yield return new WaitForSeconds(1f);
+      }
+   }
 }

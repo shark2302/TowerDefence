@@ -24,6 +24,10 @@ public class LevelConfig : ScriptableObject
     public GameObject TavernPrefab;
     public int TavernCost;
     public int UnitsInTavern;
+    
+    public bool CanSetSuperCanon;
+    public GameObject CanonSuperPrefab;
+    public int CanonSuperCost;
 
     public int GetMoneyForLevel()
     {
@@ -78,5 +82,21 @@ public class LevelConfig : ScriptableObject
     {
         return UnitsInTavern;
     }
+    
+    public bool IsAvailibleToSetSuperCanon()
+    {
+        return CanSetSuperCanon;
+    }
+
+    public GameObject GetSuperCanonPrefab()
+    {
+        return CanonSuperPrefab;
+    }
+
+    public int GetSuperCanonCost()
+    {
+        return CanonSuperCost;
+    }
+    
     
 }

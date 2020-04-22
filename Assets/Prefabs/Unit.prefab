@@ -394,7 +394,7 @@ MonoBehaviour:
   _spawners:
   - {fileID: 0}
   _speed: 5
-  _damage: 100
+  _damage: 30
 --- !u!195 &644582035398720152
 NavMeshAgent:
   m_ObjectHideFlags: 0

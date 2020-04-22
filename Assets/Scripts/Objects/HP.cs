@@ -14,7 +14,6 @@ public class HP : MonoBehaviour
     private void OnEnable()
     {
         _animator = GetComponent<Animator>();
-        Debug.Log(_healthBar);
         _healthBar.SetMaxHealth(_health);
     }
 
@@ -24,12 +23,13 @@ public class HP : MonoBehaviour
         _healthBar.SetHealth(_health);
         if (_health <= 0)
         {
-            if (_animator != null)
+            /* if (_animator != null)
             {
                 _animator.SetTrigger("Death");
                 Destroy(gameObject, 2);
             }
-            else Destroy(gameObject);
+            else */
+                Destroy(gameObject);
         }
     }
 

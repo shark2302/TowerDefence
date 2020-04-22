@@ -12,19 +12,17 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField] private int _countOfSpawnableUnits;
     [SerializeField] private Text _text;
     [SerializeField] private GameObject _prefab;
-    private bool _hasInstalled;
-
-    private void OnEnable()
-    {
-        _hasInstalled = false;
-    }
+    [SerializeField] private Animator _animator;
+    private GameObject _mainTower;
 
     private void OnMouseDown()
     {
-        if (_hasInstalled)
+        if (_animator.GetBool("Active") && _countOfSpawnableUnits > 0)
         {
             var obj = Instantiate(_prefab, gameObject.transform.position, Quaternion.identity);
-            obj.GetComponent<UnitController>().SetSpawners(_spawners);
+            UnitController uc = obj.GetComponent<UnitController>();
+            uc.SetSpawners(_spawners);
+            uc.SetTower(_mainTower);
             _countOfSpawnableUnits--;
             _text.text = "Осталось рыцарей : " + _countOfSpawnableUnits;
         }
@@ -38,12 +36,12 @@ public class UnitSpawner : MonoBehaviour
     public void SetCount(int count)
     {
         _countOfSpawnableUnits = count;
+        _text.text = "Осталось рыцарей : " + _countOfSpawnableUnits;
     }
 
-    public void SetHasInstall(bool b)
+    public void SetTower(GameObject tower)
     {
-        _hasInstalled = b;
-        if (b)
-            _text.text = "Осталось рыцарей : " + _countOfSpawnableUnits;
+        _mainTower = tower;
     }
+    
 }

@@ -2733,7 +2733,7 @@ MonoBehaviour:
   _speed: 10
   _animator: {fileID: 6527322422293018376}
   _damage: 20
-  _attackRange: 20
+  _attackRange: 30
 --- !u!114 &6527322422293018382
 MonoBehaviour:
   m_ObjectHideFlags: 0

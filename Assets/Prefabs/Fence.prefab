@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459d808f866cd43cb83487baccdaf797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 200
   _healthBar: {fileID: 7935258336671585423}
 --- !u!208 &-2262143720982666340
 NavMeshObstacle:
