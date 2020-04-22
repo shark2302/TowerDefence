@@ -7,9 +7,7 @@ public class CanonController : MonoBehaviour
 {
     [SerializeField] private GameObject _bulletPrefab;
     private float _reloadTimer;
-    [SerializeField]
-    private float _reloadCooldown;
-
+    [SerializeField] private float _reloadCooldown;
     [SerializeField] private Transform _posToSpawnBullet;
     private float _lastShotTime;
     [SerializeField] private int _damage;
@@ -38,7 +36,6 @@ public class CanonController : MonoBehaviour
                 GameObject bullet = Instantiate(_bulletPrefab, 
                     new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 10, gameObject.transform.position.z), Quaternion.identity);
                 _reloadTimer = _reloadCooldown;
-                Debug.Log(bullet);
                 Bullet b = bullet.GetComponent<Bullet>();
                 b.SetTarget(_target);
                 b.SetDamage(_damage);

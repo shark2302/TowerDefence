@@ -15,7 +15,6 @@ public class LevelMenuController : MonoBehaviour
       if(PlayerPrefs.GetInt("LevelsCompleted") == 0)
          PlayerPrefs.SetInt("LevelsCompleted", 1);
       int levelsComplited = PlayerPrefs.GetInt("LevelsCompleted");
-      Debug.Log(levelsComplited);
       for (int i = levelsComplited; i < _levelButtons.Length; i++)
       {
          _levelButtons[i].interactable = false;

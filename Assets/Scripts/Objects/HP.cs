@@ -23,12 +23,12 @@ public class HP : MonoBehaviour
         _healthBar.SetHealth(_health);
         if (_health <= 0)
         {
-            /* if (_animator != null)
+             if (_animator != null)
             {
                 _animator.SetTrigger("Death");
                 Destroy(gameObject, 2);
             }
-            else */
+            else 
                 Destroy(gameObject);
         }
     }

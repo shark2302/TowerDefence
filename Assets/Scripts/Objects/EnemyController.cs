@@ -17,14 +17,12 @@ public class EnemyController : MonoBehaviour
     private bool _isMoving;
     private GameObject _tower;
     private bool _endGame;
-
     private HP _hp;
-    // Start is called before the first frame update
+    
     void OnEnable()
     {
         _animator.SetTrigger("RunTrigger");
         _isMoving = true;
-       // _tower = GameObject.Find("MainTower").gameObject;
         _target = _tower;
         _reloadTimer = _reloadCooldown;
         _hp = GetComponent<HP>();
@@ -32,11 +30,11 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_endGame)
+        if (_endGame || _hp.GetHP() <= 0)
             return;
         if (_tower == null)
         {
-            _animator.SetTrigger("WinAnimation");
+            _animator.SetTrigger("WinTrigger");
             Destroy(gameObject, 1.5f);
             _endGame = true;
         }

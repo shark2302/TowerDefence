@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Objects;
 using UnityEngine;
@@ -27,7 +28,8 @@ public class LevelController : MonoBehaviour
     private bool _endGame;
     private bool _win = false;
     private int _sceneIndex;
-    
+    private Coroutine _endGameRoutine;
+    private bool _paused;
     void Start()
     {
         if (_config.CanSetCanon)
@@ -62,12 +64,19 @@ public class LevelController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        if(_endGameRoutine != null)
+            StopCoroutine(_endGameRoutine);
+        _endGameRoutine = null;
+    }
+
+
     void Update()
     {
         if (_endGame)
         {
-            StartCoroutine(EndGame());
+           _endGameRoutine = StartCoroutine(EndGame());
         }
         if (_mainTower == null)
         {
@@ -115,6 +124,11 @@ public class LevelController : MonoBehaviour
                     }
                 }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
     }
 
 
@@ -124,6 +138,8 @@ public class LevelController : MonoBehaviour
         _currentObjectAnimator = _currentObject.GetComponent<Animator>();
         _currentObjectAnimator.SetBool("Active", false);
         _currentObstacle = _currentObject.GetComponent<NavMeshObstacle>();
+        _currentBoxCollider = _currentObject.GetComponent<BoxCollider>();
+        _currentBoxCollider.enabled = false;
         _currentObstacle.enabled = false;
         _money -= _config.GetCanonCost();
         _textForMoney.text = "Money : " + _money + "$";
@@ -167,6 +183,8 @@ public class LevelController : MonoBehaviour
         _currentObjectAnimator.SetBool("Active", false);
         _currentObstacle = _currentObject.GetComponent<NavMeshObstacle>();
         _currentObstacle.enabled = false;
+        _currentBoxCollider = _currentObject.GetComponent<BoxCollider>();
+        _currentBoxCollider.enabled = false;
         _money -= _config.GetSuperCanonCost();
         _textForMoney.text = "Money : " + _money + "$";
         MakeButtonsInactive();
@@ -225,7 +243,7 @@ public class LevelController : MonoBehaviour
     }
     
 
-    IEnumerator EndGame()
+    private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(1.5f);
         _endGamePanel.SetActive(true);
@@ -234,8 +252,10 @@ public class LevelController : MonoBehaviour
         if (_win)
         {
             _endGameText.text = "Вы победили!";
-            if(_sceneIndex + 1 > PlayerPrefs.GetInt("LevelsCompleted"))
+            if(_sceneIndex + 1 > PlayerPrefs.GetInt("LevelsCompleted") && _sceneIndex + 1 <=3)
                 PlayerPrefs.SetInt("LevelsCompleted", _sceneIndex + 1);
+            if(_sceneIndex == 3) 
+                _nextLevelButton.gameObject.SetActive(false);
         }
         if (!_win)
         {
@@ -245,8 +265,30 @@ public class LevelController : MonoBehaviour
         enabled = false;
     }
 
+    private void Pause()
+    {
+        if (!_paused)
+        {
+            _gamePanel.SetActive(false);
+            _endGamePanel.SetActive(true);
+            _nextLevelButton.gameObject.SetActive(false);
+            Time.timeScale = 0;
+            _paused = true;
+        }
+        else if (_paused)
+        {
+            _nextLevelButton.gameObject.SetActive(true);
+            _gamePanel.SetActive(true);
+            _endGamePanel.SetActive(false);
+            Time.timeScale = 1;
+            _paused = false;
+        }
+    }
+
     public void RestartLevel()
     {
+        if (_paused)
+            Time.timeScale = 1;
         SceneManager.LoadScene(_sceneIndex);
     }
 
@@ -257,7 +299,11 @@ public class LevelController : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        if (_paused)
+            Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
+    
+    
     
 }

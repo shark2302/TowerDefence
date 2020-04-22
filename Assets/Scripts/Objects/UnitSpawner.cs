@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Objects;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +12,31 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private Animator _animator;
     private GameObject _mainTower;
-
-    private void OnMouseDown()
+    private bool _once;
+    private Coroutine _spawnRoutine;
+     private void Update()
     {
-        if (_animator.GetBool("Active") && _countOfSpawnableUnits > 0)
+        if (_once)
+            return;
+        if (_animator.GetBool("Active"))
+        {
+            _once = true;
+           _spawnRoutine =  StartCoroutine(Spawn());
+        }
+    }
+
+     private void OnDisable()
+     {
+         if(_spawnRoutine != null)
+             StopCoroutine(_spawnRoutine);
+         _spawnRoutine = null;
+     }
+
+
+     private IEnumerator Spawn()
+    {
+        yield return   new WaitForSeconds(1f);
+        while (_countOfSpawnableUnits > 0)
         {
             var obj = Instantiate(_prefab, gameObject.transform.position, Quaternion.identity);
             UnitController uc = obj.GetComponent<UnitController>();
@@ -25,7 +44,10 @@ public class UnitSpawner : MonoBehaviour
             uc.SetTower(_mainTower);
             _countOfSpawnableUnits--;
             _text.text = "Осталось рыцарей : " + _countOfSpawnableUnits;
+            yield return new WaitForSeconds(1f);
         }
+           
+        
     }
 
     public void SetSpawners(Spawner[] spawners)

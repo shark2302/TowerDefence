@@ -14,13 +14,14 @@ namespace Objects
         [SerializeField] private GameObject _tower;
         private List<GameObject> _enemyList;
         private Coroutine _spawnRoutine;
+        private Coroutine _deleterRoutine;
         private int _counter = 0;
         private int _destroyedObjects = 0;
         private void OnEnable()
         {
             _spawnRoutine = StartCoroutine(SpawnRoutine);
             _enemyList = new List<GameObject>();
-            StartCoroutine(NullDeleter());
+            _deleterRoutine = StartCoroutine(NullDeleter());
         }
 
         private void OnDisable()
@@ -28,8 +29,11 @@ namespace Objects
             if (_spawnRoutine != null)
                 StopCoroutine(_spawnRoutine);
             _spawnRoutine = null;
+            if (_deleterRoutine != null)
+                StopCoroutine(_deleterRoutine);
+            _deleterRoutine = null;
         }
-
+        
         private IEnumerator SpawnRoutine
         {
             get
@@ -88,22 +92,13 @@ namespace Objects
                         break;
                     }
                 }
-                Debug.Log(_enemyList);
                 yield return new WaitForSeconds(1f);
             }
         }
 
-        public void DestroyAllSpawnedObjects()
-        {
-            foreach (var enemy in _enemyList)
-            {
-                Destroy(enemy);
-            }
-        }
 
         public bool AllSpawnedObjectsDestroyed()
         {
-            Debug.Log(_counter + " " + _spawnerConfig.SpawnData.Length);
             if (_counter != _spawnerConfig.SpawnData.Length)
                 return false;
             return _enemyList.Count == 0;

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9542acd3aa5e9494f9e68c48222df5d9, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  Money: 1000
+  CanSetCanon: 1
+  CanonPrefab: {fileID: 5274150463830718554, guid: 754383b94bfb24d1fb8041beb4101923,
+    type: 3}
+  CanonCost: 200
+  CanSetFence: 1
+  FencePrefab: {fileID: 720700544725369831, guid: 6180daa48196a4ab7a747db359a5d284,
+    type: 3}
+  FenceCost: 100
+  CanSetTavern: 0
+  TavernPrefab: {fileID: 0}
+  TavernCost: 0
+  UnitsInTavern: 0
+  CanSetSuperCanon: 1
+  CanonSuperPrefab: {fileID: 297531567667108843, guid: 33df5b4db261446658f9519eb47ec7ca,
+    type: 3}
+  CanonSuperCost: 500

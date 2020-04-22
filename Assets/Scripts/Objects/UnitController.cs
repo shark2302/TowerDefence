@@ -21,7 +21,7 @@ public class UnitController : MonoBehaviour
    private float _reloadTimer;
    private HP _hp;
    private GameObject _mainTower;
- 
+   private Coroutine _checkTower;
    private void OnEnable()
    {
       _navAgent = GetComponent<NavMeshAgent>();
@@ -31,10 +31,20 @@ public class UnitController : MonoBehaviour
       _isMoving = true;
       _reloadTimer = _reloadCooldown;
       _hp = GetComponent<HP>();
-      StartCoroutine(CheckMainTower());
+      _checkTower = StartCoroutine(CheckMainTower());
    }
-   private void Update()
+
+   private void OnDisable()
    {
+      if(_checkTower != null)
+         StopCoroutine(_checkTower);
+      _checkTower = null;
+   }
+
+   private void FixedUpdate()
+   {
+      if(_hp.GetHP() <= 0)
+         return;
       if (_target == null)
       {
          _target = FindNearestEnemy();
@@ -50,7 +60,7 @@ public class UnitController : MonoBehaviour
             _targetHP = _target.GetComponent<HP>();
             _isMoving = false;
          }
-         else if(_isMoving)
+         else if(Vector3.Distance(transform.position, _target.transform.position) > _attackRange && !_isMoving || _isMoving)
          {
             RotateToTarget();
             _animator.SetTrigger("RunTrigger");
@@ -66,13 +76,21 @@ public class UnitController : MonoBehaviour
    private GameObject FindNearestEnemy()
    {
       List<GameObject> enemies = CombineSpawnedEnemy();
-      Debug.Log(enemies.Count);
-      int distance = 10000000;
+      float distance = 10000000;
       GameObject nearestEnemy = null;
       foreach (var enemy in enemies)
       {
-         if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) < distance)
-            nearestEnemy = enemy;
+        
+         if (enemy != null)
+         {
+            float d = Vector3.Distance(transform.position, enemy.transform.position);
+            if (d < distance)
+            {
+               distance = d;
+               nearestEnemy = enemy;
+            }
+         }
+           
       }
       return nearestEnemy;
    }
@@ -105,7 +123,6 @@ public class UnitController : MonoBehaviour
          if (_reloadTimer == 0)
          {
             _targetHP.ChangeHp(_damage);
-            Debug.Log(_targetHP.GetHP());
             _reloadTimer = _reloadCooldown;
             if (_targetHP.GetHP() <= 0)
             {

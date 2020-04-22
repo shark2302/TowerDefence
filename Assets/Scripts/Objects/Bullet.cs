@@ -9,21 +9,7 @@ public class Bullet : MonoBehaviour
     private float _speed = 10f;
     private int _damage;
     private GameObject _target;
-    //private float _lifeTime = 3f;
-    //private float _timer;
 
-
-    private void OnEnable()
-    {
-       // _timer = _lifeTime;
-    }
-    private void Update()
-    {
-        /*_timer -= Time.deltaTime;
-        if(_timer <= 0f) 
-            Destroy(gameObject);
-            */
-    }
     private void FixedUpdate()
     {
         if (_target == null)
