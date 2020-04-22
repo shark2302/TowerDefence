@@ -23,10 +23,10 @@ public class HP : MonoBehaviour
         _healthBar.SetHealth(_health);
         if (_health <= 0)
         {
-             if (_animator != null)
+             if (_animator != null && !(gameObject.tag == "Fence"|| gameObject.tag == "Canon"))
             {
                 _animator.SetTrigger("Death");
-                Destroy(gameObject, 2);
+                Destroy(gameObject, 1.3f);
             }
             else 
                 Destroy(gameObject);
