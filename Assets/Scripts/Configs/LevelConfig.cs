@@ -29,74 +29,93 @@ public class LevelConfig : ScriptableObject
     public GameObject CanonSuperPrefab;
     public int CanonSuperCost;
 
-    public int GetMoneyForLevel()
+    public int Money1
     {
-        return Money;
+        get => Money;
+        set => Money = value;
     }
 
-    public bool IsAvailibleToSetCanon()
+    public bool CanSetCanon1
     {
-        return CanSetCanon;
+        get => CanSetCanon;
+        set => CanSetCanon = value;
     }
 
-
-    public bool IsAvailibleToSetFence()
+    public GameObject CanonPrefab1
     {
-        return CanSetFence;
+        get => CanonPrefab;
+        set => CanonPrefab = value;
     }
 
-    public GameObject GetCanonPrefab()
+    public int CanonCost1
     {
-        return CanonPrefab;
+        get => CanonCost;
+        set => CanonCost = value;
     }
 
-    public GameObject GetFencePrefab()
+    public bool CanSetFence1
     {
-        return FencePrefab;
+        get => CanSetFence;
+        set => CanSetFence = value;
     }
 
-    public int GetCanonCost()
+    public GameObject FencePrefab1
     {
-        return CanonCost;
+        get => FencePrefab;
+        set => FencePrefab = value;
     }
 
-    public int GetFenceCost()
+    public int FenceCost1
     {
-        return FenceCost;
-    }
-    public bool IsAvailibleToSetTavern()
-    {
-        return CanSetTavern;
+        get => FenceCost;
+        set => FenceCost = value;
     }
 
-    public GameObject GetTavernPrefab()
+    public bool CanSetTavern1
     {
-        return TavernPrefab;
+        get => CanSetTavern;
+        set => CanSetTavern = value;
     }
 
-    public int GetTavernCost()
+    public GameObject TavernPrefab1
     {
-        return TavernCost;
+        get => TavernPrefab;
+        set => TavernPrefab = value;
     }
-    public int GetUnitsInTavern()
+
+    public int TavernCost1
     {
-        return UnitsInTavern;
+        get => TavernCost;
+        set => TavernCost = value;
     }
+
+    public int UnitsInTavern1
+    {
+        get => UnitsInTavern;
+        set => UnitsInTavern = value;
+    }
+
+    public bool CanSetSuperCanon1
+    {
+        get => CanSetSuperCanon;
+        set => CanSetSuperCanon = value;
+    }
+
+    public GameObject CanonSuperPrefab1
+    {
+        get => CanonSuperPrefab;
+        set => CanonSuperPrefab = value;
+    }
+
+    public int CanonSuperCost1
+    {
+        get => CanonSuperCost;
+        set => CanonSuperCost = value;
+    }
+
+   
     
-    public bool IsAvailibleToSetSuperCanon()
-    {
-        return CanSetSuperCanon;
-    }
-
-    public GameObject GetSuperCanonPrefab()
-    {
-        return CanonSuperPrefab;
-    }
-
-    public int GetSuperCanonCost()
-    {
-        return CanonSuperCost;
-    }
+    
     
     
 }

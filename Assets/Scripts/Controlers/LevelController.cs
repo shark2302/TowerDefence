@@ -35,31 +35,31 @@ public class LevelController : MonoBehaviour
         if (_config.CanSetCanon)
         {
             _buttons[0].gameObject.SetActive(true);
-            _buttons[0].GetComponentInChildren<Text>().text = _config.GetCanonPrefab().name + "\n" + "Cost : " + _config.GetCanonCost();
+            _buttons[0].GetComponentInChildren<Text>().text = _config.CanonPrefab.name + "\n" + "Cost : " + _config.CanonCost;
         }
 
         if (_config.CanSetFence)
         {
             _buttons[1].gameObject.SetActive(true);
-            _buttons[1].GetComponentInChildren<Text>().text = _config.GetFencePrefab().name + "\n" + "Cost : " + _config.GetFenceCost();
+            _buttons[1].GetComponentInChildren<Text>().text = _config.FencePrefab.name + "\n" + "Cost : " + _config.FenceCost;
         }
 
         if (_config.CanSetTavern)
         {
             _buttons[2].gameObject.SetActive(true);
             _buttons[2].GetComponentInChildren<Text>().text =
-                _config.GetTavernPrefab().name + "\n" + "Cost : " + _config.GetTavernCost() + 
-                "\n(" + _config.GetUnitsInTavern() + " units)";
+                _config.TavernPrefab.name + "\n" + "Cost : " + _config.TavernCost + 
+                "\n(" + _config.UnitsInTavern + " units)";
         }
 
         if (_config.CanSetSuperCanon)
         {
             _buttons[3].gameObject.SetActive(true);
-            _buttons[3].GetComponentInChildren<Text>().text = _config.GetSuperCanonPrefab().name + "\n" + "Cost : " + _config.GetSuperCanonCost();
+            _buttons[3].GetComponentInChildren<Text>().text = _config.CanonSuperPrefab.name + "\n" + "Cost : " + _config.CanonSuperCost;
         }
 
-        _textForMoney.text = "Money : " + _config.GetMoneyForLevel() + "$";
-        _money = _config.GetMoneyForLevel();
+        _textForMoney.text = "Money : " + _config.Money1 + "$";
+        _money = _config.Money;
         _sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
     }
@@ -134,58 +134,58 @@ public class LevelController : MonoBehaviour
 
     public void SetCanon()
     {
-        _currentObject = Instantiate(_config.GetCanonPrefab(), new Vector3(-1000, 0, 0), Quaternion.identity);
+        _currentObject = Instantiate(_config.CanonPrefab, new Vector3(-1000, 0, 0), Quaternion.identity);
         _currentObjectAnimator = _currentObject.GetComponent<Animator>();
         _currentObjectAnimator.SetBool("Active", false);
         _currentObstacle = _currentObject.GetComponent<NavMeshObstacle>();
         _currentBoxCollider = _currentObject.GetComponent<BoxCollider>();
         _currentBoxCollider.enabled = false;
         _currentObstacle.enabled = false;
-        _money -= _config.GetCanonCost();
+        _money -= _config.CanonCost;
         _textForMoney.text = "Money : " + _money + "$";
         MakeButtonsInactive();
     }
 
     public void SetFence()
     {
-        _currentObject = Instantiate(_config.GetFencePrefab(), new Vector3(-1000, 0, 0), _config.GetFencePrefab().transform.rotation);
+        _currentObject = Instantiate(_config.FencePrefab, new Vector3(-1000, 0, 0), _config.FencePrefab.transform.rotation);
         _currentObjectAnimator = _currentObject.GetComponent<Animator>();
         _currentObjectAnimator.SetBool("Active", false);
         _currentBoxCollider = _currentObject.GetComponent<BoxCollider>();
         _currentObstacle = _currentObject.GetComponent<NavMeshObstacle>();
         _currentObstacle.enabled = false;
         _currentBoxCollider.enabled = false;
-        _money -= _config.GetFenceCost();
+        _money -= _config.FenceCost;
         _textForMoney.text = "Money : " + _money + "$";
         MakeButtonsInactive();
     }
     
     public void SetTavern()
     {
-        _currentObject = Instantiate(_config.TavernPrefab, new Vector3(-1000, 0, 0), _config.GetTavernPrefab().transform.rotation);
+        _currentObject = Instantiate(_config.TavernPrefab, new Vector3(-1000, 0, 0), _config.TavernPrefab.transform.rotation);
         _currentObjectAnimator = _currentObject.GetComponent<Animator>();
         _currentObjectAnimator.SetBool("Active", false);
         UnitSpawner unitSpawnerScript = _currentObject.GetComponent<UnitSpawner>();
         unitSpawnerScript.SetSpawners(_spawners);
-        unitSpawnerScript.SetCount(_config.GetUnitsInTavern());
+        unitSpawnerScript.SetCount(_config.UnitsInTavern);
         unitSpawnerScript.SetTower(_mainTower);
         _currentBoxCollider = _currentObject.GetComponent<BoxCollider>();
         _currentBoxCollider.enabled = false;
-        _money -= _config.GetTavernCost();
+        _money -= _config.TavernCost;
         _textForMoney.text = "Money : " + _money + "$";
         MakeButtonsInactive();
     }
     
     public void SetSuperCanon()
     {
-        _currentObject = Instantiate(_config.GetSuperCanonPrefab(), new Vector3(-1000, 0, 0), Quaternion.identity);
+        _currentObject = Instantiate(_config.CanonSuperPrefab, new Vector3(-1000, 0, 0), Quaternion.identity);
         _currentObjectAnimator = _currentObject.GetComponent<Animator>();
         _currentObjectAnimator.SetBool("Active", false);
         _currentObstacle = _currentObject.GetComponent<NavMeshObstacle>();
         _currentObstacle.enabled = false;
         _currentBoxCollider = _currentObject.GetComponent<BoxCollider>();
         _currentBoxCollider.enabled = false;
-        _money -= _config.GetSuperCanonCost();
+        _money -= _config.CanonSuperCost;
         _textForMoney.text = "Money : " + _money + "$";
         MakeButtonsInactive();
     }
@@ -210,20 +210,20 @@ public class LevelController : MonoBehaviour
 
     private void CheckMoney()
     {
-        if (_money < _config.GetCanonCost())
+        if (_money < _config.CanonCost)
         {
             _buttons[0].interactable = false;
         }
 
-        if (_money < _config.GetFenceCost())
+        if (_money < _config.FenceCost)
         {
             _buttons[1].interactable = false;
         }
-        if (_money < _config.GetTavernCost())
+        if (_money < _config.TavernCost)
         {
             _buttons[2].interactable = false;
         }
-        if (_money < _config.GetSuperCanonCost())
+        if (_money < _config.CanonSuperCost)
         {
             _buttons[3].interactable = false;
         }
