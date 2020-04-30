@@ -58,7 +58,7 @@ public class LevelController : MonoBehaviour
             _buttons[3].GetComponentInChildren<Text>().text = _config.CanonSuperPrefab.name + "\n" + "Cost : " + _config.CanonSuperCost;
         }
 
-        _textForMoney.text = "Money : " + _config.Money1 + "$";
+        _textForMoney.text = "Money : " + _config.Money + "$";
         _money = _config.Money;
         _sceneIndex = SceneManager.GetActiveScene().buildIndex;
 

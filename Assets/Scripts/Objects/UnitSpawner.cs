@@ -40,8 +40,8 @@ public class UnitSpawner : MonoBehaviour
         {
             var obj = Instantiate(_prefab, gameObject.transform.position, Quaternion.identity);
             UnitController uc = obj.GetComponent<UnitController>();
-            uc.SetSpawners(_spawners);
-            uc.SetTower(_mainTower);
+            uc?.SetSpawners(_spawners);
+            uc?.SetTower(_mainTower);
             _countOfSpawnableUnits--;
             _text.text = "Осталось рыцарей : " + _countOfSpawnableUnits;
             yield return new WaitForSeconds(1f);

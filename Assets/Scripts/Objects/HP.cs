@@ -8,7 +8,7 @@ public class HP : MonoBehaviour
 {
     [SerializeField]
     private int _health;
-
+    
     [SerializeField] private HealthBar _healthBar;
     private Animator _animator;
     private void OnEnable()
