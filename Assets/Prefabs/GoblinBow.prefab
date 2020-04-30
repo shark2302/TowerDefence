@@ -2747,6 +2747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _hasDeathAnimation: 1
   _healthBar: {fileID: 3198903569527170460}
 --- !u!54 &6527322422293018383
 Rigidbody:

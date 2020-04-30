@@ -2287,6 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 400
+  _hasDeathAnimation: 1
   _healthBar: {fileID: 8558996893703722356}
 --- !u!1 &3982549211551601597
 GameObject:

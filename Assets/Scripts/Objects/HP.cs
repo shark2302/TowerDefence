@@ -8,7 +8,8 @@ public class HP : MonoBehaviour
 {
     [SerializeField]
     private int _health;
-    
+
+    [SerializeField] private bool _hasDeathAnimation;
     [SerializeField] private HealthBar _healthBar;
     private Animator _animator;
     private void OnEnable()
@@ -23,7 +24,7 @@ public class HP : MonoBehaviour
         _healthBar.SetHealth(_health);
         if (_health <= 0)
         {
-             if (_animator != null && !(gameObject.tag == "Fence"|| gameObject.tag == "Canon"))
+             if (_animator != null && !_hasDeathAnimation)
             {
                 _animator.SetTrigger("Death");
                 Destroy(gameObject, 1.3f);

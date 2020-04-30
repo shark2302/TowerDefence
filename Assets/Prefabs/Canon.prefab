@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 200
+  _hasDeathAnimation: 0
   _healthBar: {fileID: 5044724594831757771}
 --- !u!208 &3581524072567394748
 NavMeshObstacle:
